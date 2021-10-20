@@ -32,6 +32,6 @@
             <Font size="30.0" />
          </font>
       </Label>
-      <Button fx:id="signupButton" alignment="CENTER" layoutX="609.0" layoutY="21.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="77.0" style="-fx-background-color: #29434e;" text="Login" textFill="WHITE" />
+      <Button fx:id="loginButton" alignment="CENTER" layoutX="609.0" layoutY="21.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="77.0" style="-fx-background-color: #29434e;" text="Login" textFill="WHITE" />
    </children>
 </AnchorPane>

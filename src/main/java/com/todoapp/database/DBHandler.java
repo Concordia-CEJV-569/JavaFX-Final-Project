@@ -1,5 +1,7 @@
 package com.todoapp.database;
 
+import com.todoapp.model.User;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
@@ -14,7 +16,7 @@ public class DBHandler extends Config {
         return dbConnection;
     }
 
-    public void signUpUser(String firstName, String lastName, String username, String password) {
+    public void signUpUser(User user) {
         String query = "INSERT INTO " + Const.USERS_TABLE + "(" +
                 Const.USERS_FIRST_NAME + "," +
                 Const.USERS_LAST_NAME + "," +
@@ -23,10 +25,10 @@ public class DBHandler extends Config {
 
         try {
             PreparedStatement preparedStatement = getDbConnection().prepareStatement(query);
-            preparedStatement.setString(1, firstName);
-            preparedStatement.setString(2, lastName);
-            preparedStatement.setString(3, username);
-            preparedStatement.setString(4, password);
+            preparedStatement.setString(1, user.getFirstName());
+            preparedStatement.setString(2, user.getLastName());
+            preparedStatement.setString(3, user.getUsername());
+            preparedStatement.setString(4, user.getPassword());
 
             preparedStatement.executeUpdate();
         } catch (SQLException e) {

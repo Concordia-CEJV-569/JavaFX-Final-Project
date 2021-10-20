@@ -4,6 +4,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 import com.todoapp.database.DBHandler;
+import com.todoapp.model.User;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
@@ -37,15 +38,22 @@ public class SignupController {
 
     @FXML
     void initialize() {
-        DBHandler dbHandler = new DBHandler();
 
         signupButton.setOnAction(actionEvent -> {
-            String firstName = firstNameTextField.getText().trim();
-            String lastName = lastNameTextField.getText().trim();
-            String username = usernameTextField.getText().trim();
-            String password = passwordField.getText().trim();
-
-            dbHandler.signUpUser(firstName, lastName, username, password);
+            createUser();
         });
+    }
+
+    private void createUser() {
+        DBHandler dbHandler = new DBHandler();
+
+        String firstName = firstNameTextField.getText().trim();
+        String lastName = lastNameTextField.getText().trim();
+        String username = usernameTextField.getText().trim();
+        String password = passwordField.getText().trim();
+
+        User user = new User(firstName, lastName, username, password);
+
+        dbHandler.signUpUser(user);
     }
 }

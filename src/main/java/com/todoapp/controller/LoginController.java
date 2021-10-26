@@ -2,8 +2,12 @@ package com.todoapp.controller;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 
+import com.todoapp.database.DBHandler;
+import com.todoapp.model.User;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -33,8 +37,12 @@ public class LoginController {
     @FXML
     private Button signupButton;
 
+    private DBHandler dbHandler;
+
     @FXML
     void initialize() {
+        dbHandler = new DBHandler();
+
         signupButton.setOnAction(actionEvent -> {
             // Go to signup screen
             signupButton.getScene().getWindow().hide();
@@ -56,15 +64,19 @@ public class LoginController {
             String username = usernameTextField.getText().trim();
             String password = passwordField.getText().trim();
 
-            if (!username.equals("") && !password.equals("")) {
-                loginUser(username, password);
-            } else {
-                System.out.println("Invalid Credentials");
+            User user = new User();
+            user.setUsername(username);
+            user.setPassword(password);
+
+            ResultSet resultSet = dbHandler.getUser(user);
+
+            try {
+                if (resultSet != null && resultSet.next()) {
+                    System.out.println("Welcome: " + resultSet.getString("first_name"));
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
             }
         });
-    }
-
-    private void loginUser(String username, String password) {
-        // Check if credentials are valid, if true, go to the addItem screen
     }
 }

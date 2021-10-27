@@ -5,6 +5,7 @@ import java.sql.Timestamp;
 import java.util.Calendar;
 import java.util.ResourceBundle;
 
+import com.todoapp.animation.Shaker;
 import com.todoapp.database.DBHandler;
 import com.todoapp.model.Task;
 import javafx.fxml.FXML;
@@ -35,21 +36,17 @@ public class AddItemFormController {
     void initialize() {
         dbHandler = new DBHandler();
 
-        Calendar calendar = Calendar.getInstance();
         saveTaskButton.setOnAction(actionEvent -> {
-            dbHandler.insertTask(new Task(
-                    taskTextField.getText().trim(),
-                    descriptionTextField.getText().trim(),
-                    new Timestamp(calendar.getTimeInMillis())
-            ));
+            Calendar calendar = Calendar.getInstance();
+            Timestamp timestamp = new Timestamp(calendar.getTimeInMillis());
+            String taskTitle = taskTextField.getText().trim();
+            String taskDescription = descriptionTextField.getText().trim();
+
+            if (!taskTitle.equals("") && !taskDescription.equals("")) {
+                dbHandler.insertTask(new Task(AddItemController.getUserId(), taskTitle, taskDescription, timestamp));
+            } else {
+                new Shaker(saveTaskButton).shake();
+            }
         });
-    }
-
-    public int getUserId() {
-        return userId;
-    }
-
-    public void setUserId(int userId) {
-        this.userId = userId;
     }
 }

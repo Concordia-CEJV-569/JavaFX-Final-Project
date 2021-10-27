@@ -14,7 +14,7 @@ import javafx.util.Duration;
 import java.io.IOException;
 
 public class AddItemController {
-    private int userId;
+    private static int userId;
 
     @FXML
     private ImageView addImageView;
@@ -52,9 +52,6 @@ public class AddItemController {
             try {
                 AnchorPane formAnchorPane = FXMLLoader.load(getClass().getResource("/com/todoapp/addItemForm.fxml"));
 
-                AddItemFormController addItemFormController = new AddItemFormController();
-                addItemFormController.setUserId(getUserId());
-
                 FadeTransition rootFadeTransition = new FadeTransition(Duration.millis(2000), formAnchorPane);
                 rootFadeTransition.setFromValue(0f);
                 rootFadeTransition.setToValue(1f);
@@ -69,11 +66,11 @@ public class AddItemController {
         });
     }
 
-    public void setUserId(int userId) {
-        this.userId = userId;
+    public static void setUserId(int userId) {
+        AddItemController.userId = userId;
     }
 
-    public int getUserId() {
-        return userId;
+    public static int getUserId() {
+        return AddItemController.userId;
     }
 }

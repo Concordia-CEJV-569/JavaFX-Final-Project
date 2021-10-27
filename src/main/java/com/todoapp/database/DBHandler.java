@@ -66,7 +66,7 @@ public class DBHandler extends Config {
 
         try {
             PreparedStatement preparedStatement = getDbConnection().prepareStatement(query);
-            preparedStatement.setInt(1, 10);
+            preparedStatement.setInt(1, task.getUserId());
             preparedStatement.setString(2, task.getTitle());
             preparedStatement.setString(3, task.getDescription());
             preparedStatement.setTimestamp(4, task.getCreatedAt());

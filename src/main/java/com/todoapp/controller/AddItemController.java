@@ -14,6 +14,8 @@ import javafx.util.Duration;
 import java.io.IOException;
 
 public class AddItemController {
+    private int userId;
+
     @FXML
     private ImageView addImageView;
 
@@ -62,5 +64,13 @@ public class AddItemController {
                 e.printStackTrace();
             }
         });
+    }
+
+    public void setUserId(int userId) {
+        this.userId = userId;
+    }
+
+    public int getUserId() {
+        return userId;
     }
 }

@@ -20,6 +20,8 @@ import javafx.stage.Stage;
 
 public class LoginController {
 
+    private int userId;
+
     @FXML
     private ResourceBundle resources;
 
@@ -49,7 +51,7 @@ public class LoginController {
             signupButton.getScene().getWindow().hide();
             FXMLLoader fxmlLoader = new FXMLLoader();
             fxmlLoader.setLocation(getClass().getResource("/com/todoapp/signup.fxml"));
-            changeScene(fxmlLoader);
+            changeScene(fxmlLoader, false);
         });
 
         loginButton.setOnAction(actionEvent -> {
@@ -64,6 +66,7 @@ public class LoginController {
 
             try {
                 if (resultSet != null && resultSet.next()) {
+                    userId = resultSet.getInt("id");
                     showAddItemScreen();
                 } else {
                     new Shaker(passwordField).shake();
@@ -79,10 +82,10 @@ public class LoginController {
         signupButton.getScene().getWindow().hide();
         FXMLLoader fxmlLoader = new FXMLLoader();
         fxmlLoader.setLocation(getClass().getResource("/com/todoapp/addItem.fxml"));
-        changeScene(fxmlLoader);
+        changeScene(fxmlLoader, true);
     }
 
-    private void changeScene(FXMLLoader fxmlLoader) {
+    private void changeScene(FXMLLoader fxmlLoader, boolean isSignedIn) {
         try {
             fxmlLoader.load();
         } catch (IOException e) {
@@ -92,6 +95,12 @@ public class LoginController {
         Stage stage = new Stage();
         Scene scene = new Scene(root);
         stage.setScene(scene);
+
+        if (isSignedIn) {
+            AddItemController addItemController = fxmlLoader.getController();
+            addItemController.setUserId(userId);
+        }
+
         stage.showAndWait();
     }
 }

@@ -1,5 +1,6 @@
 package com.todoapp.database;
 
+import com.todoapp.model.Task;
 import com.todoapp.model.User;
 
 import java.sql.*;
@@ -54,5 +55,25 @@ public class DBHandler extends Config {
         }
 
         return resultSet;
+    }
+
+    public void insertTask(Task task) {
+        String query = "INSERT INTO " + Const.TASKS_TABLE + "(" +
+                Const.TASKS_USER_ID + "," +
+                Const.TASKS_TITLE + "," +
+                Const.TASKS_DESCRIPTION + "," +
+                Const.TASKS_CREATED_AT + ") VALUES(?,?,?,?)";
+
+        try {
+            PreparedStatement preparedStatement = getDbConnection().prepareStatement(query);
+            preparedStatement.setInt(1, 10);
+            preparedStatement.setString(2, task.getTitle());
+            preparedStatement.setString(3, task.getDescription());
+            preparedStatement.setTimestamp(4, task.getCreatedAt());
+
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 }

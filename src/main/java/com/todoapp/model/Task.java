@@ -1,16 +1,18 @@
 package com.todoapp.model;
 
+import java.sql.Timestamp;
+
 public class Task {
     private String title;
-    private long CreatedAt;
+    private Timestamp createdAt;
     private String description;
 
     public Task() {
     }
 
-    public Task(String title, long createdAt, String description) {
+    public Task(String title, String description, Timestamp createdAt) {
         this.title = title;
-        CreatedAt = createdAt;
+        this.createdAt = createdAt;
         this.description = description;
     }
 
@@ -22,12 +24,12 @@ public class Task {
         this.title = title;
     }
 
-    public long getCreatedAt() {
-        return CreatedAt;
+    public Timestamp getCreatedAt() {
+        return createdAt;
     }
 
-    public void setCreatedAt(long createdAt) {
-        CreatedAt = createdAt;
+    public void setCreatedAt(Timestamp createdAt) {
+        this.createdAt = createdAt;
     }
 
     public String getDescription() {

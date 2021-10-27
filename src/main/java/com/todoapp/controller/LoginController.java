@@ -49,16 +49,7 @@ public class LoginController {
             signupButton.getScene().getWindow().hide();
             FXMLLoader fxmlLoader = new FXMLLoader();
             fxmlLoader.setLocation(getClass().getResource("/com/todoapp/signup.fxml"));
-            try {
-                fxmlLoader.load();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            Parent root = fxmlLoader.getRoot();
-            Stage stage = new Stage();
-            Scene scene = new Scene(root);
-            stage.setScene(scene);
-            stage.showAndWait();
+            changeScene(fxmlLoader);
         });
 
         loginButton.setOnAction(actionEvent -> {
@@ -73,7 +64,7 @@ public class LoginController {
 
             try {
                 if (resultSet != null && resultSet.next()) {
-                    System.out.println("Welcome: " + resultSet.getString("first_name"));
+                    showAddItemScreen();
                 } else {
                     new Shaker(passwordField).shake();
                     new Shaker(usernameTextField).shake();
@@ -82,5 +73,25 @@ public class LoginController {
                 e.printStackTrace();
             }
         });
+    }
+
+    private void showAddItemScreen() {
+        signupButton.getScene().getWindow().hide();
+        FXMLLoader fxmlLoader = new FXMLLoader();
+        fxmlLoader.setLocation(getClass().getResource("/com/todoapp/addItem.fxml"));
+        changeScene(fxmlLoader);
+    }
+
+    private void changeScene(FXMLLoader fxmlLoader) {
+        try {
+            fxmlLoader.load();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        Parent root = fxmlLoader.getRoot();
+        Stage stage = new Stage();
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.showAndWait();
     }
 }

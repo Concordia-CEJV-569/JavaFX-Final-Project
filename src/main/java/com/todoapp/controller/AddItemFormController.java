@@ -43,7 +43,7 @@ public class AddItemFormController {
             String taskDescription = descriptionTextField.getText().trim();
 
             if (!taskTitle.equals("") && !taskDescription.equals("")) {
-                dbHandler.insertTask(new Task(AddItemController.getUserId(), taskTitle, taskDescription, timestamp));
+                dbHandler.insertTask(new Task(AddItemController.userId, taskTitle, taskDescription, timestamp));
             } else {
                 new Shaker(saveTaskButton).shake();
             }

@@ -97,8 +97,7 @@ public class LoginController {
         stage.setScene(scene);
 
         if (isSignedIn) {
-            AddItemController addItemController = fxmlLoader.getController();
-            addItemController.setUserId(userId);
+            AddItemController.userId = userId;
         }
 
         stage.showAndWait();

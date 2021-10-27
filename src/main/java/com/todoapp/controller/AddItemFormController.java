@@ -12,6 +12,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 
 public class AddItemFormController {
+    private int userId;
 
     @FXML
     private ResourceBundle resources;
@@ -42,5 +43,13 @@ public class AddItemFormController {
                     new Timestamp(calendar.getTimeInMillis())
             ));
         });
+    }
+
+    public int getUserId() {
+        return userId;
+    }
+
+    public void setUserId(int userId) {
+        this.userId = userId;
     }
 }

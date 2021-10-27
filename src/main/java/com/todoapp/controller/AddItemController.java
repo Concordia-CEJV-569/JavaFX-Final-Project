@@ -52,6 +52,9 @@ public class AddItemController {
             try {
                 AnchorPane formAnchorPane = FXMLLoader.load(getClass().getResource("/com/todoapp/addItemForm.fxml"));
 
+                AddItemFormController addItemFormController = new AddItemFormController();
+                addItemFormController.setUserId(getUserId());
+
                 FadeTransition rootFadeTransition = new FadeTransition(Duration.millis(2000), formAnchorPane);
                 rootFadeTransition.setFromValue(0f);
                 rootFadeTransition.setToValue(1f);

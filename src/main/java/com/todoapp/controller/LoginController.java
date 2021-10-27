@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 
+import com.todoapp.animation.Shaker;
 import com.todoapp.database.DBHandler;
 import com.todoapp.model.User;
 import javafx.fxml.FXML;
@@ -73,6 +74,9 @@ public class LoginController {
             try {
                 if (resultSet != null && resultSet.next()) {
                     System.out.println("Welcome: " + resultSet.getString("first_name"));
+                } else {
+                    new Shaker(passwordField).shake();
+                    new Shaker(usernameTextField).shake();
                 }
             } catch (SQLException e) {
                 e.printStackTrace();

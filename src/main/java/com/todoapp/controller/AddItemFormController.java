@@ -1,34 +1,32 @@
 package com.todoapp.controller;
 
-import java.net.URL;
 import java.sql.Timestamp;
 import java.util.Calendar;
-import java.util.ResourceBundle;
 
-import com.todoapp.animation.Shaker;
-import com.todoapp.database.DBHandler;
-import com.todoapp.model.Task;
 import javafx.fxml.FXML;
+import com.todoapp.model.Task;
+import javafx.scene.control.Label;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 
+import com.todoapp.animation.Shaker;
+import com.todoapp.database.DBHandler;
+
 public class AddItemFormController {
-    private int userId;
-
     @FXML
-    private ResourceBundle resources;
-
-    @FXML
-    private URL location;
-
-    @FXML
-    private TextField taskTextField;
+    private TextField titleTextField;
 
     @FXML
     private TextField descriptionTextField;
 
     @FXML
     private Button saveTaskButton;
+
+    @FXML
+    private Label successLabel;
+
+    @FXML
+    private Button taskCounterButton;
 
     private DBHandler dbHandler;
 
@@ -39,11 +37,21 @@ public class AddItemFormController {
         saveTaskButton.setOnAction(actionEvent -> {
             Calendar calendar = Calendar.getInstance();
             Timestamp timestamp = new Timestamp(calendar.getTimeInMillis());
-            String taskTitle = taskTextField.getText().trim();
+            String taskTitle = titleTextField.getText().trim();
             String taskDescription = descriptionTextField.getText().trim();
 
             if (!taskTitle.equals("") && !taskDescription.equals("")) {
                 dbHandler.insertTask(new Task(AddItemController.userId, taskTitle, taskDescription, timestamp));
+
+                successLabel.setVisible(true);
+                taskCounterButton.setVisible(true);
+                taskCounterButton.setText("My Todos: (" + 2 + ")");
+                titleTextField.setText("");
+                descriptionTextField.setText("");
+
+                taskCounterButton.setOnAction(actionEvent1 -> {
+                    // send user to the list screen
+                });
             } else {
                 new Shaker(saveTaskButton).shake();
             }

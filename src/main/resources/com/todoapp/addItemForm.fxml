@@ -8,7 +8,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="700.0" style="-fx-background-color: #819ca9;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.todoapp.controller.AddItemFormController">
     <children>
-      <TextField fx:id="taskTextField" layoutX="162.0" layoutY="135.0" prefHeight="44.0" prefWidth="377.0" promptText="Task">
+      <TextField fx:id="titleTextField" layoutX="162.0" layoutY="135.0" prefHeight="44.0" prefWidth="377.0" promptText="Task">
          <font>
             <Font size="18.0" />
          </font>
@@ -30,7 +30,17 @@
                   <Font size="36.0" />
                </font>
             </Label>
+            <Label fx:id="successLabel" alignment="CENTER" layoutX="501.0" layoutY="24.0" prefHeight="24.0" prefWidth="185.0" text="Task Added Successfully!" textFill="WHITE" visible="false">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
          </children>
       </AnchorPane>
+      <Button fx:id="taskCounterButton" alignment="CENTER" layoutX="551.0" layoutY="359.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="135.0" style="-fx-background-color: #546e7a;" text="My Todo's (3)" textFill="WHITE" visible="false">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Button>
     </children>
 </AnchorPane>

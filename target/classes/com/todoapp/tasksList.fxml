@@ -24,24 +24,24 @@
             </Label>
          </children>
       </AnchorPane>
-      <ListView fx:id="tasksListView" layoutX="397.0" layoutY="78.0" prefHeight="317.0" prefWidth="298.0" style="-fx-background-color: #546e7a;">
+      <ListView fx:id="tasksListView" layoutX="316.0" layoutY="78.0" prefHeight="317.0" prefWidth="379.0" style="-fx-background-color: #546e7a;">
          <effect>
             <DropShadow />
          </effect>
       </ListView>
-      <AnchorPane layoutY="73.0" prefHeight="327.0" prefWidth="372.0">
+      <AnchorPane layoutY="73.0" prefHeight="327.0" prefWidth="298.0">
          <children>
-            <TextField fx:id="titleTextField" layoutX="45.0" layoutY="64.0" prefHeight="44.0" prefWidth="289.0" promptText="Task">
+            <TextField fx:id="titleTextField" layoutX="14.0" layoutY="65.0" prefHeight="44.0" prefWidth="289.0" promptText="Task">
                <font>
                   <Font size="18.0" />
                </font>
             </TextField>
-            <TextField fx:id="descriptionTextField" layoutX="45.0" layoutY="133.0" prefHeight="58.0" prefWidth="289.0" promptText="Description">
+            <TextField fx:id="descriptionTextField" layoutX="14.0" layoutY="135.0" prefHeight="58.0" prefWidth="289.0" promptText="Description">
                <font>
                   <Font size="18.0" />
                </font>
             </TextField>
-            <Button fx:id="saveTaskButton" layoutX="118.0" layoutY="232.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="142.0" style="-fx-background-color: #29434e;" text="Save Task" textFill="WHITE">
+            <Button fx:id="saveTaskButton" layoutX="88.0" layoutY="232.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="142.0" style="-fx-background-color: #29434e;" text="Save Task" textFill="WHITE">
                <font>
                   <Font size="18.0" />
                </font>

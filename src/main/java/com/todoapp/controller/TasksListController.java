@@ -1,18 +1,17 @@
 package com.todoapp.controller;
 
+import com.todoapp.model.Task;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.Pane;
-import javafx.scene.layout.Priority;
+
+import java.sql.Timestamp;
+import java.time.LocalDateTime;
 
 public class TasksListController {
     @FXML
-    private ListView<String> tasksListView;
+    private ListView<Task> tasksListView;
 
     @FXML
     private TextField titleTextField;
@@ -23,47 +22,19 @@ public class TasksListController {
     @FXML
     private Button saveTaskButton;
 
-    ObservableList<String> tasksObservableList = FXCollections.observableArrayList(
-            "John",
-            "Samantha",
-            "Jacob",
-            "Clark"
-    );
+    ObservableList<Task> tasksObservableList = FXCollections.observableArrayList();
 
     @FXML
     void initialize() {
+        Task task = new Task(11, "Clean car", "Before it's too late!", Timestamp.valueOf(LocalDateTime.now()));
+        Task task2 = new Task(11, "Clean other car", "Before it's winters", Timestamp.valueOf(LocalDateTime.now()));
+
+        tasksObservableList = FXCollections.observableArrayList();
+        tasksObservableList.add(task);
+        tasksObservableList.add(task2);
+
         tasksListView.setItems(tasksObservableList);
-
-        tasksListView.setCellFactory(stringListView -> new TaskCell());
-    }
-
-    static class TaskCell extends ListCell<String> {
-        // HBox = Horizontal Box
-        HBox hBox = new HBox();
-        Button button = new Button("Delete");
-        Label taskTitleLabel = new Label();
-
-        Pane pane = new Pane();
-        Image addImage = new Image(this.getClass().getResourceAsStream("/com/todoapp/assets/outline_add_circle_white.png"));
-        ImageView imageView = new ImageView(addImage);
-
-        public TaskCell() {
-            super();
-
-            hBox.getChildren().addAll(imageView, taskTitleLabel, button);
-            HBox.setHgrow(pane, Priority.ALWAYS);
-        }
-
-        public void updateItem(String taskName, boolean isEmpty) {
-            super.updateItem(taskName, isEmpty);
-            setText(null);
-            setGraphic(null);
-
-            if (taskName != null && !isEmpty) {
-                taskTitleLabel.setText(taskName);
-                setGraphic(hBox);
-            }
-        }
+        tasksListView.setCellFactory(taskListView -> new TaskListCellController());
     }
 
 }

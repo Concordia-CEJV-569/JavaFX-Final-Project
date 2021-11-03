@@ -24,7 +24,7 @@
             </Label>
          </children>
       </AnchorPane>
-      <ListView fx:id="tasksListView" layoutX="397.0" layoutY="78.0" prefHeight="317.0" prefWidth="298.0">
+      <ListView fx:id="tasksListView" layoutX="397.0" layoutY="78.0" prefHeight="317.0" prefWidth="298.0" style="-fx-background-color: #546e7a;">
          <effect>
             <DropShadow />
          </effect>

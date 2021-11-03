@@ -1,11 +1,14 @@
 package com.todoapp.controller;
 
+import com.todoapp.database.DBHandler;
 import com.todoapp.model.Task;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
 
@@ -22,16 +25,26 @@ public class TasksListController {
     @FXML
     private Button saveTaskButton;
 
-    ObservableList<Task> tasksObservableList = FXCollections.observableArrayList();
+    private ObservableList<Task> tasksObservableList = FXCollections.observableArrayList();
+
+    private DBHandler dbHandler;
 
     @FXML
-    void initialize() {
-        Task task = new Task(11, "Clean car", "Before it's too late!", Timestamp.valueOf(LocalDateTime.now()));
-        Task task2 = new Task(11, "Clean other car", "Before it's winters", Timestamp.valueOf(LocalDateTime.now()));
+    void initialize() throws SQLException {
+        dbHandler = new DBHandler();
+        ResultSet resultSet = dbHandler.getTasks(AddItemController.userId);
 
         tasksObservableList = FXCollections.observableArrayList();
-        tasksObservableList.add(task);
-        tasksObservableList.add(task2);
+
+        while (resultSet.next()) {
+            Task task = new Task(
+                    resultSet.getInt("user_id"),
+                    resultSet.getString("title"),
+                    resultSet.getString("description"),
+                    resultSet.getTimestamp("created_at")
+            );
+            tasksObservableList.add(task);
+        }
 
         tasksListView.setItems(tasksObservableList);
         tasksListView.setCellFactory(taskListView -> new TaskListCellController());

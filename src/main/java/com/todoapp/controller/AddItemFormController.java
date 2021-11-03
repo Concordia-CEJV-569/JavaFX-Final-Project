@@ -43,9 +43,11 @@ public class AddItemFormController {
             if (!taskTitle.equals("") && !taskDescription.equals("")) {
                 dbHandler.insertTask(new Task(AddItemController.userId, taskTitle, taskDescription, timestamp));
 
+                int numberOfTasks = dbHandler.getNumberOfTasks(AddItemController.userId);
+
                 successLabel.setVisible(true);
                 taskCounterButton.setVisible(true);
-                taskCounterButton.setText("My Todos: (" + 2 + ")");
+                taskCounterButton.setText("My Todos: (" + numberOfTasks + ")");
                 titleTextField.setText("");
                 descriptionTextField.setText("");
 

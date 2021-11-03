@@ -76,4 +76,22 @@ public class DBHandler extends Config {
             e.printStackTrace();
         }
     }
+
+    public int getNumberOfTasks(int userId) {
+        String query = "SELECT COUNT(*) FROM " + Const.TASKS_TABLE + " WHERE " + Const.TASKS_USER_ID + "=?";
+        PreparedStatement preparedStatement = null;
+        try {
+            preparedStatement = getDbConnection().prepareStatement(query);
+            preparedStatement.setInt(1, userId);
+
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            if (resultSet.next()) {
+                return resultSet.getInt(1);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return 0;
+    }
 }

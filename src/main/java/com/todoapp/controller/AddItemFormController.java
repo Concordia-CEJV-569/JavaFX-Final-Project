@@ -1,16 +1,21 @@
 package com.todoapp.controller;
 
+import java.io.IOException;
 import java.sql.Timestamp;
 import java.util.Calendar;
 
 import javafx.fxml.FXML;
 import com.todoapp.model.Task;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 
 import com.todoapp.animation.Shaker;
 import com.todoapp.database.DBHandler;
+import javafx.stage.Stage;
 
 public class AddItemFormController {
     @FXML
@@ -52,7 +57,19 @@ public class AddItemFormController {
                 descriptionTextField.setText("");
 
                 taskCounterButton.setOnAction(actionEvent1 -> {
-                    // send user to the list screen
+                    FXMLLoader fxmlLoader = new FXMLLoader();
+                    fxmlLoader.setLocation(getClass().getResource("/com/todoapp/tasksList.fxml"));
+
+                    try {
+                        fxmlLoader.load();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+
+                    Parent root = fxmlLoader.getRoot();
+                    Stage stage = new Stage();
+                    stage.setScene(new Scene(root));
+                    stage.showAndWait();
                 });
             } else {
                 new Shaker(saveTaskButton).shake();

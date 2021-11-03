@@ -44,7 +44,7 @@ public class TasksListController {
         Label taskTitleLabel = new Label();
 
         Pane pane = new Pane();
-        Image addImage = new Image(this.getClass().getResourceAsStream("/com/todoapp/assets/outline_add_circle_white_48dp.png"));
+        Image addImage = new Image(this.getClass().getResourceAsStream("/com/todoapp/assets/outline_add_circle_white.png"));
         ImageView imageView = new ImageView(addImage);
 
         public TaskCell() {

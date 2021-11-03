@@ -17,7 +17,7 @@
             </Label>
             <ImageView fx:id="addImageView" fitHeight="61.0" fitWidth="110.0" layoutX="320.0" layoutY="150.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@assets/outline_add_circle_white_48dp.png" />
+                  <Image url="@assets/outline_add_circle_white.png" />
                </image>
             </ImageView>
          </children>

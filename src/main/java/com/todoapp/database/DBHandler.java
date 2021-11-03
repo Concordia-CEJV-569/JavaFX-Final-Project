@@ -94,4 +94,20 @@ public class DBHandler extends Config {
         }
         return 0;
     }
+
+    public ResultSet getTasks(int userId) {
+        ResultSet resultSet = null;
+        String query = "SELECT * FROM " + Const.TASKS_TABLE + " WHERE " + Const.TASKS_USER_ID + "=?";
+
+        try {
+            PreparedStatement preparedStatement = getDbConnection().prepareStatement(query);
+            preparedStatement.setInt(1, userId);
+
+            resultSet = preparedStatement.executeQuery();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return resultSet;
+    }
 }

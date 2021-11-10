@@ -13,6 +13,7 @@ public class Const {
     public static final String USERS_FIRST_NAME = "first_name";
 
     // Task Table Columns
+    public static final String TASK_ID = "id";
     public static final String TASKS_TITLE = "title";
     public static final String TASKS_USER_ID = "user_id";
     public static final String TASKS_CREATED_AT = "created_at";

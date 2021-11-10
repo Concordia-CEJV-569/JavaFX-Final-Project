@@ -1,5 +1,6 @@
 package com.todoapp.controller;
 
+import com.todoapp.database.DBHandler;
 import com.todoapp.model.Task;
 
 import javafx.fxml.FXML;
@@ -33,8 +34,15 @@ public class TaskListCellController extends ListCell<Task> {
 
     private FXMLLoader fxmlLoader;
 
+    private DBHandler dbHandler;
+
     @FXML
     void initialize() {
+        deleteImageView.setOnMouseClicked(mouseEvent -> {
+            dbHandler = new DBHandler();
+            dbHandler.deleteTask(AddItemController.userId, getItem().getId());
+            getListView().getItems().remove(getItem());
+        });
     }
 
     @Override

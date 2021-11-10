@@ -3,6 +3,7 @@ package com.todoapp.model;
 import java.sql.Timestamp;
 
 public class Task {
+    private int id;
     private int userId;
     private String title;
     private Timestamp createdAt;
@@ -16,6 +17,22 @@ public class Task {
         this.userId = userId;
         this.createdAt = createdAt;
         this.description = description;
+    }
+
+    public Task(int id, int userId, String title, String description, Timestamp createdAt) {
+        this.id = id;
+        this.title = title;
+        this.userId = userId;
+        this.createdAt = createdAt;
+        this.description = description;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public int getUserId() {

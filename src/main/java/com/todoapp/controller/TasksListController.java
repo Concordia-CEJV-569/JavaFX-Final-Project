@@ -9,8 +9,6 @@ import javafx.scene.control.*;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Timestamp;
-import java.time.LocalDateTime;
 
 public class TasksListController {
     @FXML
@@ -38,6 +36,7 @@ public class TasksListController {
 
         while (resultSet.next()) {
             Task task = new Task(
+                    resultSet.getInt("id"),
                     resultSet.getInt("user_id"),
                     resultSet.getString("title"),
                     resultSet.getString("description"),

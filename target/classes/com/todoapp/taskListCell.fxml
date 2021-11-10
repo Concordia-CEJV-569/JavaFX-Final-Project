@@ -27,7 +27,7 @@
             <Font size="16.0" />
          </font>
       </Label>
-      <Label fx:id="dateCreatedLabel" layoutX="8.0" layoutY="69.0" prefHeight="20.0" prefWidth="346.0" text="Date Created" textFill="WHITE">
+      <Label fx:id="dateCreatedLabel" layoutX="159.0" layoutY="69.0" prefHeight="20.0" prefWidth="195.0" text="Date Created" textFill="WHITE">
          <font>
             <Font size="16.0" />
          </font>

@@ -110,4 +110,17 @@ public class DBHandler extends Config {
 
         return resultSet;
     }
+
+    public void deleteTask(int userId, int taskId) {
+        String query = "DELETE FROM " + Const.TASKS_TABLE + " WHERE " + Const.TASKS_USER_ID + "=? AND " + Const.TASK_ID + "=?";
+        try {
+            PreparedStatement preparedStatement = getDbConnection().prepareStatement(query);
+            preparedStatement.setInt(1, userId);
+            preparedStatement.setInt(2, taskId);
+            preparedStatement.execute();
+            preparedStatement.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
 }

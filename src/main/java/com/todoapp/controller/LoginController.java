@@ -76,6 +76,18 @@ public class LoginController {
                 e.printStackTrace();
             }
         });
+
+        usernameTextField.setOnKeyReleased(keyEvent -> handleKeyReleased());
+        passwordField.setOnKeyReleased(keyEvent -> handleKeyReleased());
+    }
+
+    public void handleKeyReleased() {
+        String username = usernameTextField.getText().trim();
+        String password = passwordField.getText().trim();
+
+        boolean disableButton = username.trim().isEmpty() || password.trim().isEmpty();
+
+        loginButton.setDisable(disableButton);
     }
 
     private void showAddItemScreen() {

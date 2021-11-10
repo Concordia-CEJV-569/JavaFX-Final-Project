@@ -32,9 +32,14 @@
             <Font size="16.0" />
          </font>
       </Label>
-      <ImageView fx:id="deleteImageView" fitHeight="38.0" fitWidth="38.0" layoutX="313.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="deleteImageView" fitHeight="38.0" fitWidth="38.0" layoutX="316.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@assets/outline_delete_white.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="editImageView" fitHeight="38.0" fitWidth="38.0" layoutX="280.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@assets/outline_edit_white.png" />
          </image>
       </ImageView>
    </children>

@@ -47,6 +47,12 @@ public class LoginController {
         dbHandler = new DBHandler();
 
         signupButton.setOnAction(actionEvent -> {
+            try {
+                Thread.sleep(10000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+
             // Go to signup screen
             signupButton.getScene().getWindow().hide();
             FXMLLoader fxmlLoader = new FXMLLoader();

@@ -32,6 +32,9 @@ public class TaskListCellController extends ListCell<Task> {
     @FXML
     private ImageView deleteImageView;
 
+    @FXML
+    private ImageView editImageView;
+
     private FXMLLoader fxmlLoader;
 
     private DBHandler dbHandler;
@@ -42,6 +45,10 @@ public class TaskListCellController extends ListCell<Task> {
             dbHandler = new DBHandler();
             dbHandler.deleteTask(AddItemController.userId, getItem().getId());
             getListView().getItems().remove(getItem());
+        });
+
+        editImageView.setOnMouseClicked(mouseEvent -> {
+            System.out.println("Update task!");
         });
     }
 

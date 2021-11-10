@@ -47,11 +47,20 @@ public class LoginController {
         dbHandler = new DBHandler();
 
         signupButton.setOnAction(actionEvent -> {
-            try {
-                Thread.sleep(10000);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
+
+            Runnable runnable = new Runnable() {
+                @Override
+                public void run() {
+                    try {
+                        Thread.sleep(10000);
+                        System.out.println("Complete");
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                }
+            };
+
+            new Thread(runnable).start();
 
             // Go to signup screen
             signupButton.getScene().getWindow().hide();

@@ -24,19 +24,19 @@
             </Label>
          </children>
       </AnchorPane>
-      <ListView fx:id="tasksListView" layoutX="316.0" layoutY="78.0" prefHeight="317.0" prefWidth="379.0" style="-fx-background-color: #546e7a;">
+      <ListView fx:id="tasksListView" layoutX="300.0" layoutY="78.0" prefHeight="317.0" prefWidth="395.0" style="-fx-background-color: #546e7a;">
          <effect>
             <DropShadow />
          </effect>
       </ListView>
       <AnchorPane layoutY="73.0" prefHeight="327.0" prefWidth="298.0">
          <children>
-            <TextField fx:id="titleTextField" layoutX="14.0" layoutY="65.0" prefHeight="44.0" prefWidth="289.0" promptText="Task">
+            <TextField fx:id="titleTextField" layoutX="14.0" layoutY="65.0" prefHeight="44.0" prefWidth="278.0" promptText="Task">
                <font>
                   <Font size="18.0" />
                </font>
             </TextField>
-            <TextField fx:id="descriptionTextField" layoutX="14.0" layoutY="135.0" prefHeight="58.0" prefWidth="289.0" promptText="Description">
+            <TextField fx:id="descriptionTextField" layoutX="14.0" layoutY="135.0" prefHeight="58.0" prefWidth="278.0" promptText="Description">
                <font>
                   <Font size="18.0" />
                </font>

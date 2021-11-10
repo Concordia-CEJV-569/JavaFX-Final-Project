@@ -9,6 +9,7 @@ import javafx.scene.control.*;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Timestamp;
 
 public class TasksListController {
     @FXML
@@ -47,6 +48,27 @@ public class TasksListController {
 
         tasksListView.setItems(tasksObservableList);
         tasksListView.setCellFactory(taskListView -> new TaskListCellController());
+
+        saveTaskButton.setOnAction(actionEvent -> addNewTask());
+    }
+
+    public void addNewTask() {
+        if (!titleTextField.getText().equals("") && !descriptionTextField.getText().equals("")) {
+            Task newTask = new Task(
+                    AddItemController.userId,
+                    titleTextField.getText().trim(),
+                    descriptionTextField.getText().trim(),
+                    null
+            );
+
+            dbHandler.insertTask(newTask);
+
+            titleTextField.setText("");
+            descriptionTextField.setText("");
+
+            tasksObservableList.add(newTask);
+            tasksListView.setItems(tasksObservableList);
+        }
     }
 
 }

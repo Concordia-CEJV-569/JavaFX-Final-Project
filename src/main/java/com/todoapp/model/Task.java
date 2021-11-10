@@ -1,6 +1,7 @@
 package com.todoapp.model;
 
 import java.sql.Timestamp;
+import java.util.Calendar;
 
 public class Task {
     private int id;
@@ -15,8 +16,13 @@ public class Task {
     public Task(int userId, String title, String description, Timestamp createdAt) {
         this.title = title;
         this.userId = userId;
-        this.createdAt = createdAt;
         this.description = description;
+        if (createdAt != null) {
+            this.createdAt = createdAt;
+        } else {
+            Calendar calendar = Calendar.getInstance();
+            this.createdAt = new Timestamp(calendar.getTimeInMillis());
+        }
     }
 
     public Task(int id, int userId, String title, String description, Timestamp createdAt) {
